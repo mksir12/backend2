@@ -1,5 +1,8 @@
+const BOT_TOKEN = "7621395891:AAHhHL4vNZCNAzdMYKdKxvuwiUCblc8CSI0";
+const BACKEND_URL = "https://backend-drab-alpha-79.vercel.app";
+
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request) {
     if (request.method !== "POST") return new Response("OK");
 
     const update = await request.json();
@@ -17,7 +20,7 @@ export default {
 ⚠️ Only files under 2GB are supported.
 
 Made by @MrMNTG`;
-      await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -36,7 +39,7 @@ Made by @MrMNTG`;
     const link = match[0];
 
     // ✅ Notify user
-    await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -46,13 +49,13 @@ Made by @MrMNTG`;
     });
 
     // ✅ Forward to backend
-    await fetch(env.BACKEND_URL + "/api/download", {
+    await fetch(BACKEND_URL + "/api/download", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: chatId,
         link,
-        bot_token: env.BOT_TOKEN
+        bot_token: BOT_TOKEN
       })
     });
 
