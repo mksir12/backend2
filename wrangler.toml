@@ -2,7 +2,3 @@ name = "backend2"
 main = "worker.js"
 compatibility_date = "2025-06-20"
 workers_dev = true
-
-[vars]
-BOT_TOKEN = "7621395891:AAHhHL4vNZCNAzdMYKdKxvuwiUCblc8CSI0"
-BACKEND_URL = "https://backend-drab-alpha-79.vercel.app"
