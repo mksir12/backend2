@@ -1,5 +1,7 @@
 name = "backend2"
-type = "javascript"
+main = "worker.js"
+compatibility_date = "2025-06-20"
+workers_dev = true
 
 [vars]
 BOT_TOKEN = "7621395891:AAHhHL4vNZCNAzdMYKdKxvuwiUCblc8CSI0"
