@@ -1,0 +1,6 @@
+name = "backend2"
+type = "javascript"
+
+[vars]
+BOT_TOKEN = "7621395891:AAHhHL4vNZCNAzdMYKdKxvuwiUCblc8CSI0"
+BACKEND_URL = "https://backend-drab-alpha-79.vercel.app"
