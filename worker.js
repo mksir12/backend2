@@ -9,24 +9,43 @@ export default {
     const chatId = msg.chat.id;
     const text = msg.text.trim();
 
-    // Match Terabox links
+    // ✅ START command
+    if (text === "/start") {
+      const welcome = `👋 Welcome to the Terabox Downloader Bot!
+
+📥 Just send me a valid Terabox share link and I’ll fetch the file for you.
+⚠️ Only files under 2GB are supported.
+
+Made by @MrMNTG`;
+      await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: welcome
+        })
+      });
+      return new Response("OK");
+    }
+
+    // ✅ Match Terabox link
     const teraRegex = /https?:\/\/(?:www\.)?[^/\s]*tera[^/\s]*\.[a-z]+\/s\/\S+/i;
     const match = text.match(teraRegex);
     if (!match) return new Response("OK");
 
     const link = match[0];
 
-    // Notify user
+    // ✅ Notify user
     await fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: chatId,
-        text: "📥 Download started. Please wait while I fetch your file from Terabox."
+        text: "📥 Download started. Please wait while I fetch your file from Terabox..."
       })
     });
 
-    // Forward to backend
+    // ✅ Forward to backend
     await fetch(env.BACKEND_URL + "/api/download", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
