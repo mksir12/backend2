@@ -1,5 +1,5 @@
 const BOT_TOKEN = "7621395891:AAHhHL4vNZCNAzdMYKdKxvuwiUCblc8CSI0";
-const BACKEND_URL = "https://backend-rqe31.kinsta.app";
+const BACKEND_URL = "https://backend-drab-alpha-79.vercel.app";
 
 export default {
   async fetch(request) {
